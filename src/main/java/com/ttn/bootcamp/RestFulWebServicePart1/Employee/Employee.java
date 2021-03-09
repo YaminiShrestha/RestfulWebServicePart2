@@ -1,57 +1,33 @@
 package com.ttn.bootcamp.RestFulWebServicePart1.Employee;
 
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
 public class Employee {
+    @ApiModelProperty("Id should be unique")
     private Integer id;
 
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]*")
-    @Size(min = 2)
+    @Size(min = 2, message = "name should be atleast of 2 character")
+    @ApiModelProperty("Name should be greater than 2 character")
     private String name;
 
-    @Min(value = 20)
-    @Max(value = 50)
+    @Min(value = 20, message = "Age should not be less than 20")
+    @Max(value = 50, message = "Age should not be more than 50")
+    @ApiModelProperty(notes = "Should be between 20 t0 50")
     private Integer age;
 
-    public Employee(Integer id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }

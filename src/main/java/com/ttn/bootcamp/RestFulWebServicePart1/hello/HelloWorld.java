@@ -1,25 +1,19 @@
 package com.ttn.bootcamp.RestFulWebServicePart1.hello;
 
+import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@ApiModel(description = "Welcome to Hello World")
 public class HelloWorld {
 
     private String message;
 
-    public HelloWorld(String message) {
-        this.message = message;
-    }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String toString() {
-        return "HelloWorld{" +
-                "message='" + message + '\'' +
-                '}';
-    }
 }
